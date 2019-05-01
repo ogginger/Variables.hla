@@ -1,0 +1,21 @@
+//Variables.hla: Variable Managament in HLA.
+
+program p;
+#include("stdlib.hhf");
+
+	procedure Variables; @noframe; @nodisplay;
+	begin Variables;
+		//ArraySize is passed in via EAX.
+		intmul( 4, EAX ); //Size of element (in bytes) * ArraySize
+		mem.alloc( EAX );		
+		ret();
+	end Variables;
+
+begin p;
+	stdout.put("Variables.hla: Entrypoint.", nl);
+
+	mov( 4, EAX );
+	call Variables;
+	mem.free( EAX );	
+	
+end p;
